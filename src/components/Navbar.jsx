@@ -1,19 +1,28 @@
-function Navbar({ search, setSearch }) {
+function Navbar({ darkMode, setDarkMode, totalBooks }) {
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <h1 className="text-3xl font-bold text-white">
-          📚 BookVault
-        </h1>
-        <input
-          type="text"
-          placeholder="Search books or authors..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full md:w-80 px-4 py-2 rounded-lg border-none outline-none text-gray-700 shadow"
-        />
+    <nav className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 shadow-xl sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+        <div className="flex items-center gap-3">
+          <h1 className="text-white text-2xl sm:text-3xl font-bold">
+            📚 BookVault
+          </h1>
+
+          <span className="bg-white text-indigo-600 px-3 py-1 rounded-full font-bold shadow">
+            {totalBooks}
+          </span>
+        </div>
+
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="bg-white text-gray-800 px-4 py-2 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-md"
+        >
+          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+
       </div>
     </nav>
   );
 }
+
 export default Navbar;
